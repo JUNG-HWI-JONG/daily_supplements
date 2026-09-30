@@ -1,0 +1,16 @@
+{
+  "version": "0.1.0",
+  "updatedAt": "2026-09-30",
+  "vendors": [
+    { "id": "coupang", "name": "쿠팡", "scopes": ["domestic", "overseas"], "searchUrl": "https://www.coupang.com/np/search?q={query}", "note": "해외직구 제품은 로켓직구로 검색될 수 있음" },
+    { "id": "naver", "name": "네이버쇼핑", "scopes": ["domestic"], "searchUrl": "https://search.shopping.naver.com/search/all?query={query}" },
+    { "id": "oliveyoung", "name": "올리브영", "scopes": ["domestic"], "searchUrl": "https://www.oliveyoung.co.kr/store/search/getSearchMain.do?query={query}" },
+    { "id": "iherb", "name": "아이허브", "scopes": ["overseas"], "searchUrl": "https://kr.iherb.com/search?kw={query}" }
+  ],
+  "overseasNotice": [
+    "해외직구 건강식품은 국내 '건강기능식품' 인증 제품이 아니에요 (식약처 기능성 심사를 거치지 않음).",
+    "배송에 보통 3~10일 걸려요.",
+    "개인통관고유부호가 필요해요.",
+    "자가사용 목적 면세 기준(수량·금액)이 있어요. 구매 전 관세청 기준을 확인하세요."
+  ]
+}

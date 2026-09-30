@@ -1,0 +1,154 @@
+{
+  "version": "0.1.0",
+  "updatedAt": "2026-09-30",
+  "description": "생활환경 입력 → 영양소 가중치 가산 및 생활 팁. when 조건은 all(AND)/any(OR) 조합",
+  "rules": [
+    {
+      "id": "indoor_work",
+      "when": { "any": [ { "field": "workEnv", "op": "includes", "value": "indoor" } ] },
+      "boosts": [ { "id": "vitamin_d", "weight": 2, "evidence": "moderate" } ],
+      "reason": "실내 근무로 햇빛을 덜 받으면 몸에서 비타민 D를 적게 만들어요. 한국 성인 다수가 비타민 D 부족 상태예요."
+    },
+    {
+      "id": "night_or_shift",
+      "when": { "any": [ { "field": "shift", "op": "in", "value": ["night", "rotating"] } ] },
+      "boosts": [
+        { "id": "vitamin_d", "weight": 2, "evidence": "moderate" },
+        { "id": "magnesium", "weight": 1, "evidence": "limited" }
+      ],
+      "reason": "야간·교대 근무는 햇빛 노출이 적고 수면 리듬이 흔들리기 쉬워요.",
+      "tips": ["퇴근 후 잘 때는 암막커튼·안대로 빛 차단", "근무 시작 후반부에는 카페인 피하기"]
+    },
+    {
+      "id": "long_screen",
+      "when": { "any": [ { "field": "workEnv", "op": "includes", "value": "long_screen" } ] },
+      "boosts": [
+        { "id": "lutein", "weight": 1, "evidence": "moderate" },
+        { "id": "astaxanthin", "weight": 1, "evidence": "mfds" }
+      ],
+      "reason": "화면을 오래 보면 눈의 피로와 건조가 쌓이기 쉬워요.",
+      "tips": ["20-20-20 규칙", "화면 작업 중 의식적으로 눈 깜빡이기"]
+    },
+    {
+      "id": "long_sitting",
+      "when": { "any": [ { "field": "workEnv", "op": "includes", "value": "long_sitting" } ] },
+      "boosts": [],
+      "tips": ["30~50분마다 일어나서 1~2분 움직이기"]
+    },
+    {
+      "id": "long_standing",
+      "when": { "any": [ { "field": "workEnv", "op": "includes", "value": "long_standing" } ] },
+      "boosts": [],
+      "tips": ["쉬는 시간에 다리 올리기", "압박스타킹 고려"]
+    },
+    {
+      "id": "low_fish",
+      "when": { "all": [ { "field": "fishPerWeek", "op": "lte", "value": 0 } ] },
+      "boosts": [ { "id": "omega3", "weight": 2, "evidence": "moderate" } ],
+      "reason": "생선을 거의 먹지 않으면 오메가3(EPA·DHA) 섭취가 부족해요."
+    },
+    {
+      "id": "low_dairy",
+      "when": { "all": [ { "field": "dairy", "op": "eq", "value": "low" } ] },
+      "boosts": [ { "id": "calcium", "weight": 2, "evidence": "moderate" } ],
+      "reason": "한국인은 칼슘 섭취가 권장량보다 부족한 편이고, 유제품을 안 먹으면 더 부족해요."
+    },
+    {
+      "id": "low_veg_fruit",
+      "when": { "all": [ { "field": "vegFruit", "op": "eq", "value": "low" } ] },
+      "boosts": [
+        { "id": "vitamin_c", "weight": 1, "evidence": "moderate" },
+        { "id": "folate", "weight": 1, "evidence": "moderate" }
+      ],
+      "preferMultivitamin": true,
+      "reason": "채소·과일이 부족하면 여러 비타민이 함께 부족해지기 쉬워 종합비타민이 효율적이에요."
+    },
+    {
+      "id": "irregular_meals",
+      "when": { "any": [ { "field": "mealsPerDay", "op": "lte", "value": 2 }, { "field": "eatingOut", "op": "eq", "value": "often" } ] },
+      "boosts": [ { "id": "vitamin_b_complex", "weight": 1, "evidence": "limited" } ],
+      "preferMultivitamin": true,
+      "reason": "끼니를 거르거나 외식이 많으면 영양 균형이 깨지기 쉬워요."
+    },
+    {
+      "id": "frequent_alcohol",
+      "when": { "all": [ { "field": "alcoholPerWeek", "op": "gte", "value": 2 } ] },
+      "boosts": [
+        { "id": "vitamin_b_complex", "weight": 2, "evidence": "moderate" },
+        { "id": "milk_thistle", "weight": 1, "evidence": "mfds" }
+      ],
+      "reason": "술은 비타민 B1 흡수를 방해하고 소모를 늘려요.",
+      "tips": ["영양제보다 음주 횟수를 줄이는 게 훨씬 효과적이에요"]
+    },
+    {
+      "id": "smoker",
+      "when": { "all": [ { "field": "smoking", "op": "eq", "value": true } ] },
+      "boosts": [ { "id": "vitamin_c", "weight": 2, "evidence": "moderate" } ],
+      "excludes": [ { "tag": "high_beta_carotene", "reason": "흡연자의 고용량 베타카로틴 보충은 폐암 위험을 높인다는 연구가 있어요." } ],
+      "reason": "흡연은 비타민 C를 빠르게 소모시켜요."
+    },
+    {
+      "id": "high_caffeine",
+      "when": { "all": [ { "field": "caffeineCups", "op": "gte", "value": 3 } ] },
+      "boosts": [ { "id": "magnesium", "weight": 1, "evidence": "limited" } ],
+      "tips": ["철분·칼슘은 커피와 1시간 이상 간격", "오후 2시 이후 카페인 줄이기"]
+    },
+    {
+      "id": "high_stress",
+      "when": { "all": [ { "field": "stress", "op": "gte", "value": 4 } ] },
+      "boosts": [
+        { "id": "theanine", "weight": 1, "evidence": "mfds" },
+        { "id": "magnesium", "weight": 1, "evidence": "limited" }
+      ],
+      "reason": "스트레스가 높으면 긴장 완화를 돕는 성분이 도움이 될 수 있어요."
+    },
+    {
+      "id": "short_sleep",
+      "when": { "all": [ { "field": "sleepHours", "op": "lte", "value": 5 } ] },
+      "boosts": [],
+      "tips": ["수면 부족은 어떤 영양제로도 대신할 수 없어요. 30분 일찍 자는 것부터 시작해보세요"]
+    },
+    {
+      "id": "intense_exercise",
+      "when": { "all": [ { "field": "exercise", "op": "eq", "value": "intense" } ] },
+      "boosts": [ { "id": "magnesium", "weight": 1, "evidence": "limited" } ],
+      "reason": "땀을 많이 흘리면 마그네슘 손실이 늘어요."
+    },
+    {
+      "id": "vegan",
+      "when": { "all": [ { "field": "diet", "op": "eq", "value": "vegan" } ] },
+      "boosts": [
+        { "id": "vitamin_b12", "weight": 3, "evidence": "moderate" },
+        { "id": "omega3", "weight": 1, "evidence": "moderate" },
+        { "id": "vitamin_d", "weight": 1, "evidence": "moderate" },
+        { "id": "calcium", "weight": 1, "evidence": "moderate" },
+        { "id": "zinc", "weight": 1, "evidence": "limited" }
+      ],
+      "requireVegan": true,
+      "reason": "비타민 B12는 동물성 식품에만 있어서 비건은 반드시 보충이 필요해요."
+    },
+    {
+      "id": "vegetarian",
+      "when": { "all": [ { "field": "diet", "op": "eq", "value": "vegetarian" } ] },
+      "boosts": [ { "id": "vitamin_b12", "weight": 2, "evidence": "moderate" } ],
+      "reason": "채식 위주 식단은 비타민 B12가 부족하기 쉬워요."
+    },
+    {
+      "id": "age_50_plus",
+      "when": { "all": [ { "field": "age", "op": "gte", "value": 50 } ] },
+      "boosts": [
+        { "id": "vitamin_d", "weight": 1, "evidence": "moderate" },
+        { "id": "vitamin_b12", "weight": 1, "evidence": "moderate" },
+        { "id": "calcium", "weight": 1, "evidence": "moderate" }
+      ],
+      "reason": "나이가 들면 비타민 B12 흡수가 줄고 뼈 건강 관리가 중요해져요."
+    },
+    {
+      "id": "pregnancy_planning",
+      "when": { "all": [ { "field": "pregnancy", "op": "eq", "value": "planning" } ] },
+      "boosts": [ { "id": "folate", "weight": 3, "evidence": "moderate" } ],
+      "reason": "임신 전부터 엽산을 먹으면 태아의 신경관 발달에 도움이 돼요.",
+      "tips": ["임신 준비 중이면 산부인과에서 산전검사와 함께 상담해보세요"]
+    }
+  ]
+}

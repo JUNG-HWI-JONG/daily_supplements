@@ -1,0 +1,51 @@
+{
+  "version": "0.1.0",
+  "updatedAt": "2026-09-30",
+  "slots": [
+    { "id": "wake", "label": "일어나자마자 (공복)", "shiftLabel": "기상 직후 (공복)", "withMeal": false, "order": 1 },
+    { "id": "breakfast", "label": "아침 식사 후", "shiftLabel": "첫 식사 후", "withMeal": true, "order": 2 },
+    { "id": "lunch", "label": "점심 식사 후", "shiftLabel": "근무 중 식사 후", "withMeal": true, "order": 3 },
+    { "id": "dinner", "label": "저녁 식사 후", "shiftLabel": "마지막 식사 후", "withMeal": true, "order": 4 },
+    { "id": "bedtime", "label": "자기 30분 전", "shiftLabel": "잠들기 30분 전", "withMeal": false, "order": 5 }
+  ],
+  "defaults": {
+    "onceMode": {
+      "slot": "dinner",
+      "note": "'한 번에' 모드는 하루 중 가장 든든하게(지방 포함) 먹는 끼니 뒤로 배치. 사용자가 변경 가능",
+      "fallbackIfConflict": "상호작용 때문에 한 번에 불가능하면 이유를 설명하고 최소 횟수로 나눔"
+    },
+    "shiftMode": "slot을 절대 시각이 아닌 사용자 기상·식사·취침 시각에 매핑. 근무 형태별로 매일 다른 시각이 될 수 있음"
+  },
+  "nutrients": {
+    "vitamin_a":      { "withFood": true, "fatMeal": true, "preferred": ["breakfast", "lunch", "dinner"] },
+    "vitamin_d":      { "withFood": true, "fatMeal": true, "preferred": ["breakfast", "lunch", "dinner"] },
+    "vitamin_e":      { "withFood": true, "fatMeal": true, "preferred": ["breakfast", "lunch", "dinner"] },
+    "omega3":         { "withFood": true, "fatMeal": true, "preferred": ["lunch", "dinner", "breakfast"], "tip": "비린 트림이 나면 식사 직후 + 냉동 보관" },
+    "lutein":         { "withFood": true, "fatMeal": true, "preferred": ["lunch", "dinner", "breakfast"] },
+    "astaxanthin":    { "withFood": true, "fatMeal": true, "preferred": ["lunch", "dinner", "breakfast"] },
+    "gla":            { "withFood": true, "fatMeal": true, "preferred": ["lunch", "dinner", "breakfast"] },
+    "vitamin_c":      { "withFood": true, "preferred": ["breakfast", "lunch"], "tip": "고용량은 공복에 속쓰릴 수 있어요" },
+    "vitamin_b1":     { "withFood": true, "preferred": ["breakfast", "lunch"], "avoid": ["bedtime"] },
+    "vitamin_b2":     { "withFood": true, "preferred": ["breakfast", "lunch"], "avoid": ["bedtime"] },
+    "niacin":         { "withFood": true, "preferred": ["breakfast", "lunch"], "avoid": ["bedtime"] },
+    "vitamin_b6":     { "withFood": true, "preferred": ["breakfast", "lunch"], "avoid": ["bedtime"] },
+    "folate":         { "withFood": true, "preferred": ["breakfast", "lunch"] },
+    "vitamin_b12":    { "withFood": true, "preferred": ["breakfast", "lunch"], "avoid": ["bedtime"] },
+    "biotin":         { "withFood": true, "preferred": ["breakfast", "lunch"] },
+    "vitamin_b_complex": { "withFood": true, "preferred": ["breakfast", "lunch"], "avoid": ["bedtime"], "tip": "활력 성분이라 늦게 먹으면 잠이 안 올 수 있어요" },
+    "calcium":        { "withFood": true, "preferred": ["dinner", "lunch"], "splitAbove": 500 },
+    "magnesium":      { "withFood": true, "preferred": ["dinner", "bedtime"], "tip": "몸을 이완시켜 저녁에 먹기 좋아요. 설사하면 양을 줄이세요" },
+    "iron":           { "withFood": false, "preferred": ["wake", "breakfast"], "fallback": "breakfast", "tip": "공복이 흡수가 가장 좋지만 속이 불편하면 식후에. 비타민C와 함께, 커피와는 1시간 간격" },
+    "zinc":           { "withFood": true, "preferred": ["lunch", "dinner"], "tip": "공복에 먹으면 메스꺼울 수 있어요" },
+    "selenium":       { "withFood": true, "preferred": ["breakfast", "lunch", "dinner"] },
+    "probiotics":     { "withFood": false, "preferred": ["wake", "breakfast"], "followProduct": true, "tip": "제품에 적힌 복용법(공복/식후)이 우선이에요" },
+    "psyllium":       { "withFood": false, "preferred": ["bedtime", "wake"], "isolate": true, "tip": "물 200ml 이상과 함께. 다른 영양제·약과 2시간 간격" },
+    "red_ginseng":    { "withFood": false, "preferred": ["wake", "breakfast"], "avoid": ["dinner", "bedtime"], "tip": "늦게 먹으면 잠이 안 올 수 있어요" },
+    "theanine":       { "withFood": false, "preferred": ["bedtime", "dinner", "lunch"], "tip": "긴장되는 시간(발표 전 등)에 먹어도 돼요" },
+    "milk_thistle":   { "withFood": true, "preferred": ["breakfast", "lunch", "dinner"] },
+    "glucosamine":    { "withFood": true, "preferred": ["breakfast", "lunch", "dinner"] },
+    "msm":            { "withFood": true, "preferred": ["breakfast", "lunch", "dinner"] },
+    "hyaluronic_acid":{ "withFood": false, "preferred": ["breakfast", "lunch", "dinner"] }
+  },
+  "productPlacement": "제품은 성분 중 가장 제약이 강한 규칙(avoid > isolate > separate > preferred 순)을 따라 배치. 복합제품(종합비타민)은 활력 성분 포함 시 아침·점심"
+}

@@ -1,0 +1,268 @@
+{
+  "version": "0.1.0",
+  "updatedAt": "2026-09-30",
+  "kdriNote": "성인(19~49세) 기준 대표값. 연령별 세분화·2025 개정판 대조 필요",
+  "nutrients": [
+    {
+      "id": "vitamin_a", "nameKo": "비타민 A", "nameEn": "Vitamin A", "category": "vitamin", "unit": "µg RAE",
+      "fatSoluble": true,
+      "kdri": { "type": "RDA", "male": 800, "female": 650 },
+      "ul": 3000, "ulNote": "레티놀(동물성) 기준. 베타카로틴은 UL 미적용",
+      "mfdsFunction": "어두운 곳에서 시각 적응을 위해 필요, 피부와 점막을 형성하고 기능을 유지하는데 필요, 상피세포의 성장과 발달에 필요",
+      "beginner": "눈이 어두운 곳에 적응하고 피부·점막을 건강하게 유지하는 데 필요한 비타민",
+      "cautions": ["임신 중 고용량(레티놀) 섭취 금지", "흡연자는 고용량 베타카로틴 피하기"]
+    },
+    {
+      "id": "vitamin_d", "nameKo": "비타민 D", "nameEn": "Vitamin D", "category": "vitamin", "unit": "µg",
+      "fatSoluble": true, "iuPerUnit": 40,
+      "kdri": { "type": "AI", "male": 10, "female": 10 },
+      "ul": 100, "ulNote": "100µg = 4,000IU",
+      "mfdsFunction": "칼슘과 인이 흡수되고 이용되는데 필요, 뼈의 형성과 유지에 필요, 골다공증발생 위험 감소에 도움을 줌",
+      "beginner": "햇빛을 받으면 몸에서 만들어지는 비타민. 실내 생활이 많으면 부족해지기 쉬워요",
+      "cautions": ["신장질환·고칼슘혈증이 있으면 상담 필요"]
+    },
+    {
+      "id": "vitamin_e", "nameKo": "비타민 E", "nameEn": "Vitamin E", "category": "vitamin", "unit": "mg α-TE",
+      "fatSoluble": true,
+      "kdri": { "type": "AI", "male": 12, "female": 12 },
+      "ul": 540,
+      "mfdsFunction": "유해산소로부터 세포를 보호하는데 필요",
+      "beginner": "세포가 손상되지 않도록 지켜주는 항산화 비타민",
+      "cautions": ["항응고제 복용 시 고용량 주의"]
+    },
+    {
+      "id": "vitamin_c", "nameKo": "비타민 C", "nameEn": "Vitamin C", "category": "vitamin", "unit": "mg",
+      "fatSoluble": false,
+      "kdri": { "type": "RDA", "male": 100, "female": 100 },
+      "ul": 2000,
+      "mfdsFunction": "결합조직 형성과 기능유지에 필요, 철의 흡수에 필요, 유해산소로부터 세포를 보호하는데 필요",
+      "beginner": "피부·혈관 조직을 만들고 철분 흡수를 돕는 비타민. 흡연자는 더 필요해요",
+      "cautions": ["고용량은 공복 시 속쓰림 가능 → 식후", "신장결석 병력 시 고용량 피하기"]
+    },
+    {
+      "id": "vitamin_b1", "nameKo": "비타민 B1 (티아민)", "nameEn": "Thiamine", "category": "vitamin", "unit": "mg",
+      "fatSoluble": false,
+      "kdri": { "type": "RDA", "male": 1.2, "female": 1.1 },
+      "ul": null,
+      "mfdsFunction": "탄수화물과 에너지 대사에 필요",
+      "beginner": "밥·빵 같은 탄수화물을 에너지로 바꾸는 데 필요. 술을 자주 마시면 부족해지기 쉬워요",
+      "cautions": []
+    },
+    {
+      "id": "vitamin_b2", "nameKo": "비타민 B2 (리보플라빈)", "nameEn": "Riboflavin", "category": "vitamin", "unit": "mg",
+      "fatSoluble": false,
+      "kdri": { "type": "RDA", "male": 1.5, "female": 1.2 },
+      "ul": null,
+      "mfdsFunction": "체내 에너지 생성에 필요",
+      "beginner": "에너지를 만드는 데 필요한 비타민. 먹으면 소변이 노랗게 되는 건 정상이에요",
+      "cautions": []
+    },
+    {
+      "id": "niacin", "nameKo": "나이아신 (비타민 B3)", "nameEn": "Niacin", "category": "vitamin", "unit": "mg NE",
+      "fatSoluble": false,
+      "kdri": { "type": "RDA", "male": 16, "female": 14 },
+      "ul": 35, "ulByForm": { "nicotinic_acid": 35, "nicotinamide": 1000 },
+      "ulNote": "니코틴산 35mg(홍조 유발), 니코틴아마이드 1,000mg",
+      "mfdsFunction": "체내 에너지 생성에 필요",
+      "beginner": "에너지를 만드는 데 필요한 비타민",
+      "cautions": ["니코틴산 형태는 얼굴 홍조 유발 가능", "간질환 시 고용량 피하기"]
+    },
+    {
+      "id": "vitamin_b6", "nameKo": "비타민 B6", "nameEn": "Vitamin B6", "category": "vitamin", "unit": "mg",
+      "fatSoluble": false,
+      "kdri": { "type": "RDA", "male": 1.5, "female": 1.4 },
+      "ul": 100,
+      "mfdsFunction": "단백질 및 아미노산 이용에 필요, 혈액의 호모시스테인 수준을 정상으로 유지하는데 필요",
+      "beginner": "단백질을 몸에서 잘 쓰도록 돕는 비타민",
+      "cautions": ["장기간 고용량은 손발 저림(말초신경 이상) 유발 가능"]
+    },
+    {
+      "id": "folate", "nameKo": "엽산", "nameEn": "Folate", "category": "vitamin", "unit": "µg",
+      "fatSoluble": false,
+      "kdri": { "type": "RDA", "male": 400, "female": 400, "unit": "µg DFE" },
+      "ul": 1000, "ulNote": "제품 함량·UL 모두 보충제 엽산(합성, folic acid) µg 기준. KDRI는 DFE 단위라 직접 비교 시 주의",
+      "mfdsFunction": "세포와 혈액생성에 필요, 태아 신경관의 정상 발달에 필요, 혈액의 호모시스테인 수준을 정상으로 유지하는데 필요",
+      "beginner": "새 세포와 혈액을 만드는 데 필요. 임신을 준비한다면 특히 중요해요",
+      "cautions": []
+    },
+    {
+      "id": "vitamin_b12", "nameKo": "비타민 B12", "nameEn": "Vitamin B12", "category": "vitamin", "unit": "µg",
+      "fatSoluble": false,
+      "kdri": { "type": "RDA", "male": 2.4, "female": 2.4 },
+      "ul": null,
+      "mfdsFunction": "정상적인 엽산 대사에 필요",
+      "beginner": "혈액과 신경 건강에 필요. 동물성 식품에만 있어서 채식하면 꼭 보충해야 해요",
+      "cautions": []
+    },
+    {
+      "id": "biotin", "nameKo": "비오틴", "nameEn": "Biotin", "category": "vitamin", "unit": "µg",
+      "fatSoluble": false,
+      "kdri": { "type": "AI", "male": 30, "female": 30 },
+      "ul": null,
+      "mfdsFunction": "지방, 탄수화물, 단백질 대사와 에너지 생성에 필요",
+      "beginner": "에너지 대사에 필요한 비타민. 모발·손톱 영양제에 자주 들어가요",
+      "cautions": ["고용량(1,000µg 이상)은 갑상선·심장 혈액검사 결과를 왜곡할 수 있음 → 검사 2~3일 전 중단"]
+    },
+    {
+      "id": "calcium", "nameKo": "칼슘", "nameEn": "Calcium", "category": "mineral", "unit": "mg",
+      "fatSoluble": false,
+      "kdri": { "type": "RDA", "male": 800, "female": 700 },
+      "ul": 2500,
+      "maxPerDose": 500, "maxPerDoseNote": "1회 500mg 이하일 때 흡수가 좋음 → 초과 시 나눠 복용",
+      "mfdsFunction": "뼈와 치아 형성에 필요, 신경과 근육 기능 유지에 필요, 정상적인 혈액응고에 필요, 골다공증발생 위험 감소에 도움을 줌",
+      "beginner": "뼈와 치아의 재료. 우유·유제품을 잘 안 먹으면 부족하기 쉬워요",
+      "cautions": ["철분·아연·갑상선약과 시간 간격 두기", "신장결석 병력 시 상담"]
+    },
+    {
+      "id": "magnesium", "nameKo": "마그네슘", "nameEn": "Magnesium", "category": "mineral", "unit": "mg",
+      "fatSoluble": false,
+      "kdri": { "type": "RDA", "male": 360, "female": 280 },
+      "ul": 350, "ulNote": "식품 외 급원(보충제)만의 상한. 음식으로 먹는 양은 포함하지 않음",
+      "mfdsFunction": "에너지 이용에 필요, 신경과 근육 기능 유지에 필요",
+      "beginner": "근육과 신경을 안정시키는 미네랄. 눈 떨림·근육 경련 때 흔히 찾아요",
+      "cautions": ["과량 시 설사 (특히 산화·구연산 형태)", "신장질환 시 복용 금지·상담"]
+    },
+    {
+      "id": "iron", "nameKo": "철분", "nameEn": "Iron", "category": "mineral", "unit": "mg",
+      "fatSoluble": false,
+      "kdri": { "type": "RDA", "male": 10, "female": 14 },
+      "ul": 45,
+      "mfdsFunction": "체내 산소운반과 혈액생성에 필요, 에너지 생성에 필요",
+      "beginner": "혈액이 산소를 나르는 데 필요. 생리량이 많으면 부족해지기 쉬워요",
+      "cautions": ["결핍 확인 없이 장기 복용 비권장 (특히 남성) → 혈액검사 권장", "변비·속쓰림 가능", "커피·차·칼슘과 간격 두기"]
+    },
+    {
+      "id": "zinc", "nameKo": "아연", "nameEn": "Zinc", "category": "mineral", "unit": "mg",
+      "fatSoluble": false,
+      "kdri": { "type": "RDA", "male": 10, "female": 8 },
+      "ul": 35,
+      "mfdsFunction": "정상적인 면역기능에 필요, 정상적인 세포분열에 필요",
+      "beginner": "면역 기능과 상처 회복에 필요한 미네랄",
+      "cautions": ["공복 시 메스꺼움 → 식후", "장기 고용량은 구리 결핍 유발"]
+    },
+    {
+      "id": "selenium", "nameKo": "셀레늄", "nameEn": "Selenium", "category": "mineral", "unit": "µg",
+      "fatSoluble": false,
+      "kdri": { "type": "RDA", "male": 60, "female": 60 },
+      "ul": 400,
+      "mfdsFunction": "유해산소로부터 세포를 보호하는데 필요",
+      "beginner": "항산화에 필요한 미네랄. 종합비타민으로 충분한 경우가 많아요",
+      "cautions": []
+    },
+    {
+      "id": "omega3", "nameKo": "오메가3 (EPA+DHA)", "nameEn": "Omega-3 (EPA+DHA)", "category": "functional", "unit": "mg",
+      "fatSoluble": true,
+      "mfdsRange": [500, 2000], "mfdsRangeNote": "혈중 중성지질·혈행 개선 500~2,000mg / 건조한 눈 개선 600~2,240mg",
+      "safetyCap": 3000, "safetyCapNote": "공식 UL 없음. 보수적 상한으로 설정",
+      "mfdsFunction": "혈중 중성지질 개선·혈행 개선에 도움을 줄 수 있음, 건조한 눈을 개선하여 눈 건강에 도움을 줄 수 있음",
+      "beginner": "등푸른 생선에 많은 좋은 기름. 눈 건조함과 혈액 순환에 도움을 줄 수 있어요",
+      "cautions": ["항응고제 복용 시 상담", "비린 트림 → 식후·냉동 보관 팁", "수술 1~2주 전 중단 권장"]
+    },
+    {
+      "id": "lutein", "nameKo": "루테인", "nameEn": "Lutein", "category": "functional", "unit": "mg",
+      "fatSoluble": true,
+      "mfdsRange": [10, 20],
+      "safetyCap": 20,
+      "mfdsFunction": "노화로 인해 감소될 수 있는 황반색소밀도를 유지하여 눈 건강에 도움을 줄 수 있음",
+      "beginner": "눈의 중심부(황반)를 지키는 색소 성분. 화면을 오래 보는 사람이 많이 찾아요",
+      "cautions": ["흡연자는 베타카로틴 함유 복합제품 주의"]
+    },
+    {
+      "id": "astaxanthin", "nameKo": "아스타잔틴 (헤마토코쿠스 추출물)", "nameEn": "Astaxanthin", "category": "functional", "unit": "mg",
+      "fatSoluble": true,
+      "mfdsRange": [4, 12],
+      "safetyCap": 12,
+      "mfdsFunction": "눈의 피로도 개선에 도움을 줄 수 있음",
+      "beginner": "붉은 색 항산화 성분. 눈이 쉽게 피로할 때 도움을 줄 수 있어요",
+      "cautions": []
+    },
+    {
+      "id": "probiotics", "nameKo": "프로바이오틱스 (유산균)", "nameEn": "Probiotics", "category": "functional", "unit": "억 CFU",
+      "fatSoluble": false,
+      "mfdsRange": [1, 100],
+      "safetyCap": null,
+      "mfdsFunction": "유산균 증식 및 유해균 억제·배변활동 원활·장 건강에 도움을 줄 수 있음",
+      "beginner": "장 속 좋은 균. 배탈·변비 등 장이 불편할 때 먼저 시도해 볼 수 있어요",
+      "cautions": ["항생제와 2시간 이상 간격", "면역억제 상태·중증 질환자는 상담", "처음 1~2주 가스·더부룩함 가능"]
+    },
+    {
+      "id": "psyllium", "nameKo": "차전자피 식이섬유", "nameEn": "Psyllium husk", "category": "functional", "unit": "g",
+      "fatSoluble": false,
+      "mfdsRange": [5.5, 11],
+      "safetyCap": null,
+      "mfdsFunction": "배변활동 원활에 도움을 줄 수 있음",
+      "beginner": "물을 머금어 변을 부드럽게 하는 식이섬유. 반드시 물을 충분히 함께 마셔야 해요",
+      "cautions": ["물 200ml 이상과 함께 (부족하면 오히려 막힘)", "다른 약·영양제와 2시간 간격", "삼킴 곤란·장폐색 병력 시 금지"]
+    },
+    {
+      "id": "red_ginseng", "nameKo": "홍삼 (진세노사이드 Rg1+Rb1+Rg3)", "nameEn": "Korean red ginseng", "category": "functional", "unit": "mg",
+      "fatSoluble": false,
+      "mfdsRange": [3, 80],
+      "safetyCap": 80,
+      "mfdsFunction": "면역력 증진·피로개선·혈소판 응집억제를 통한 혈액흐름·기억력 개선·항산화에 도움을 줄 수 있음",
+      "beginner": "피로 회복과 면역에 도움을 줄 수 있는 대표 전통 원료",
+      "cautions": ["항응고제·당뇨약·혈압약 복용 시 상담", "임신·수유 중 비권장", "늦은 시간 복용 시 잠이 안 올 수 있음", "열감·두근거림 시 중단"]
+    },
+    {
+      "id": "theanine", "nameKo": "L-테아닌", "nameEn": "L-Theanine", "category": "functional", "unit": "mg",
+      "fatSoluble": false,
+      "mfdsRange": [200, 250],
+      "safetyCap": 250,
+      "mfdsFunction": "스트레스로 인한 긴장완화에 도움을 줄 수 있음",
+      "beginner": "녹차에 들어있는 성분. 긴장되고 예민할 때 마음을 가라앉히는 데 도움을 줄 수 있어요",
+      "cautions": ["혈압약 복용 시 상담"]
+    },
+    {
+      "id": "milk_thistle", "nameKo": "밀크씨슬 (실리마린)", "nameEn": "Milk thistle (silymarin)", "category": "functional", "unit": "mg",
+      "fatSoluble": false,
+      "mfdsRange": [130, 130],
+      "safetyCap": 130,
+      "mfdsFunction": "간 건강에 도움을 줄 수 있음",
+      "beginner": "간 건강 영양제로 유명한 식물 추출물. 다만 술을 줄이는 게 먼저예요",
+      "cautions": ["국화과 식물 알레르기 주의", "임신·수유 중 비권장", "간질환 치료 중이면 상담"]
+    },
+    {
+      "id": "glucosamine", "nameKo": "글루코사민", "nameEn": "Glucosamine", "category": "functional", "unit": "mg",
+      "fatSoluble": false,
+      "mfdsRange": [1500, 2000],
+      "safetyCap": 2000,
+      "mfdsFunction": "관절 및 연골 건강에 도움을 줄 수 있음",
+      "beginner": "연골 성분. 관절이 뻐근할 때 찾는 영양제예요",
+      "cautions": ["갑각류(게·새우) 알레르기 시 금지", "항응고제(와파린) 복용 시 상담", "당뇨 시 혈당 모니터링", "임신·수유 중 비권장"]
+    },
+    {
+      "id": "msm", "nameKo": "MSM (식이유황)", "nameEn": "Methylsulfonylmethane", "category": "functional", "unit": "mg",
+      "fatSoluble": false,
+      "mfdsRange": [1500, 2000],
+      "safetyCap": 2000,
+      "mfdsFunction": "관절 및 연골 건강에 도움을 줄 수 있음",
+      "beginner": "관절 영양제에 자주 들어가는 유황 성분. 갑각류 알레르기가 있어도 먹을 수 있어요",
+      "cautions": ["임신·수유 중 비권장"]
+    },
+    {
+      "id": "gla", "nameKo": "감마리놀렌산 (GLA)", "nameEn": "Gamma-linolenic acid", "category": "functional", "unit": "mg",
+      "fatSoluble": true,
+      "mfdsRange": [210, 300],
+      "safetyCap": 300,
+      "mfdsFunction": "월경 전 변화에 의한 불편한 상태 개선·혈중 콜레스테롤 개선에 도움을 줄 수 있음",
+      "beginner": "달맞이꽃 종자유에 많은 성분. 생리 전 불편함 완화에 도움을 줄 수 있어요",
+      "cautions": ["항응고제 복용 시 상담", "임신 중 비권장"]
+    },
+    {
+      "id": "hyaluronic_acid", "nameKo": "히알루론산", "nameEn": "Hyaluronic acid", "category": "functional", "unit": "mg",
+      "fatSoluble": false,
+      "mfdsRange": [120, 120], "mfdsRangeNote": "개별인정형 원료 — 제품마다 인정 내용 확인 필요",
+      "safetyCap": 240,
+      "mfdsFunction": "피부 보습에 도움을 줄 수 있음 (개별인정)",
+      "beginner": "피부 속 수분을 붙잡는 성분. 피부가 건조할 때 먹는 보습 영양제예요",
+      "cautions": ["임신·수유 중 자료 부족 → 비권장"]
+    }
+  ],
+  "groups": [
+    {
+      "id": "vitamin_b_complex", "nameKo": "비타민 B군", "members": ["vitamin_b1", "vitamin_b2", "niacin", "vitamin_b6", "folate", "vitamin_b12", "biotin"],
+      "beginner": "에너지 대사에 필요한 B 비타민 묶음. 피곤할 때 가장 흔히 찾는 영양제예요",
+      "matchRule": "구성원 중 4종 이상을 KDRI 이상 함유한 제품(B컴플렉스·종합비타민)을 매칭"
+    }
+  ]
+}
