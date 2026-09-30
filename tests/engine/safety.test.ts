@@ -113,6 +113,22 @@ describe("선호 조건", () => {
     expect(decodeURIComponent(link.url.split("q=")[1])).toBe(r.items[0].product.searchKeyword);
   });
 
+  test("사용자가 뺀 영양소는 다시 추천하지 않고, 남은 예산으로 다시 조합", () => {
+    const input = makeInput({
+      symptoms: [
+        { id: "dry_eye", frequency: "daily", duration: "1m" },
+        { id: "frequent_diarrhea", frequency: "daily", duration: "1m" },
+      ],
+    });
+    const before = recommend(input);
+    expect(before.items.some((i) => i.covers.includes("omega3"))).toBe(true);
+    const after = recommend(input, { skipTargets: ["omega3"] });
+    expectInvariants(input, after);
+    expect(contains(after, "omega3")).toBe(false);
+    expect(after.targets.map((t) => t.id)).not.toContain("omega3");
+    expect(after.items.some((i) => i.covers.includes("probiotics"))).toBe(true);
+  });
+
   test("기간에 맞는 통 수와 총비용", () => {
     const r = run(makeInput({ symptoms: [{ id: "dry_eye", frequency: "daily", duration: "1m" }], preferences: { durationMonths: 6 } }));
     for (const i of r.items) {

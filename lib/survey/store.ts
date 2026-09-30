@@ -20,6 +20,8 @@ export interface SurveyDraft {
   symptoms: SymptomInput[];
   emergencies: string[] | null;
   preferences: Preferences;
+  /** 결과 화면에서 사용자가 뺀 영양소 */
+  skippedTargets: string[];
 }
 
 /** 선택 질문의 기본값은 어떤 규칙도 발동시키지 않는 '보통' 값 */
@@ -34,6 +36,7 @@ export const initialDraft: SurveyDraft = {
   symptoms: [],
   emergencies: null,
   preferences: { durationMonths: 3, monthlyBudget: 30000, forms: [], pillSize: "any", maxPillsPerDay: 4, mode: "auto", scope: "domestic" },
+  skippedTargets: [],
 };
 
 interface SurveyActions {
@@ -44,6 +47,8 @@ interface SurveyActions {
   toggleSymptom: (id: string) => void;
   updateSymptom: (id: string, patch: Partial<SymptomInput>) => void;
   setEmergencies: (ids: string[] | null) => void;
+  skipTargets: (ids: string[]) => void;
+  restoreTargets: (ids: string[]) => void;
   reset: () => void;
 }
 
@@ -84,13 +89,17 @@ export const useSurvey = create<SurveyDraft & SurveyActions>()(
         })),
       updateSymptom: (id, patch) => set((s) => ({ symptoms: s.symptoms.map((x) => (x.id === id ? { ...x, ...patch } : x)) })),
       setEmergencies: (emergencies) => set({ emergencies }),
+      skipTargets: (ids) => set((s) => ({ skippedTargets: [...new Set([...s.skippedTargets, ...ids])] })),
+      restoreTargets: (ids) => set((s) => ({ skippedTargets: s.skippedTargets.filter((x) => !ids.includes(x)) })),
       reset: () => set(initialDraft),
     }),
     {
       name: "survey-draft-v1",
       storage: createJSONStorage(() => safeStorage),
       skipHydration: true,
-      partialize: ({ step, profile, lifestyle, symptoms, emergencies, preferences }) => ({ step, profile, lifestyle, symptoms, emergencies, preferences }),
+      partialize: ({ step, profile, lifestyle, symptoms, emergencies, preferences, skippedTargets }) => ({
+        step, profile, lifestyle, symptoms, emergencies, preferences, skippedTargets,
+      }),
     },
   ),
 );

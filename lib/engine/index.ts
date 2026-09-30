@@ -37,7 +37,12 @@ function empty(input: UserInput, status: Recommendation["status"], messages: str
  * 추천 엔진 진입점 (PRD §6). 순수 함수 — 브라우저·서버 어디서든 실행 가능.
  * 1 점수화 → 2 안전 필터 → 3 제품 매칭 → 4 상한 검증(매칭 중 수행) → 5 시간표
  */
-export function recommend(input: UserInput, d: EngineData = defaultData): Recommendation {
+export interface RecommendOptions {
+  /** 사용자가 결과 화면에서 뺀 영양소 — 목표에서 제외하고 다시 조합 */
+  skipTargets?: string[];
+}
+
+export function recommend(input: UserInput, opts: RecommendOptions = {}, d: EngineData = defaultData): Recommendation {
   const facts = toFacts(input);
 
   // 0. 응급 증상
@@ -63,7 +68,8 @@ export function recommend(input: UserInput, d: EngineData = defaultData): Recomm
   const safety = buildSafety(d, input, scored.excludeTags, scored.avoid);
   const blocked = new Set(safety.exclusions.filter((e) => e.minAmount == null).map((e) => e.nutrientId));
   const isBlocked = (id: string) => blocked.has(id) || (d.groups.get(id)?.members.every((m) => blocked.has(m)) ?? false);
-  const targets = scored.targets.filter((t) => !isBlocked(t.id));
+  const skipped = new Set(opts.skipTargets ?? []);
+  const targets = scored.targets.filter((t) => !isBlocked(t.id) && !skipped.has(t.id));
 
   // 3~4. 제품 매칭 (예산·알약 수·상한 검증 포함)
   const { selected, unmet } = match(d, targets, input.preferences, input.profile.sex, safety, {
