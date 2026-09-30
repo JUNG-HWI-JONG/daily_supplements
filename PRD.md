@@ -393,8 +393,8 @@
 |---|---|---|
 | 프레임워크 | **Next.js (App Router) + TypeScript** | 결정 사항 |
 | UI | Tailwind CSS + shadcn/ui | 빠른 모바일 UI 구성 |
-| 폼/검증 | React Hook Form + Zod | 다단계 설문, 입력 스키마 = 엔진 입력 타입 |
-| 상태 | Zustand | 설문 진행 상태 |
+| 폼/검증 | Zod (단계별 검증) | 설문이 칩 선택 위주라 React Hook Form 없이 Zustand 상태 + Zod로 충분 → 도입 안 함 |
+| 상태 | Zustand (+ persist) | 설문 진행 상태. 작성 중 초안은 localStorage에 임시 저장(새로고침·재방문 시 이어하기) |
 | 로컬 저장 | **IndexedDB (Dexie.js)** | 가입 없이 프로필·복용 기록 저장, 용량·구조화 유리 |
 | PWA | Serwist (`@serwist/next`) 또는 수동 Service Worker + `app/manifest.ts` | 설치·오프라인 |
 | 테스트 | Vitest (추천 엔진 단위 테스트), Playwright (주요 플로우) | 안전 규칙 회귀 방지 |
@@ -406,8 +406,10 @@
 ### 14.2 폴더 구조 (안)
 
 ```
-/app                  # 라우트 (설문, 결과, 홈, 내 영양제, 설정)
-/components           # UI 컴포넌트
+/app                  # 라우트: / (시작) ✅, /survey ✅, /result (임시), 홈·내 영양제·설정 (예정)
+/components/survey    # 설문 4단계 + 선택 칩 ✅
+/components/ui        # shadcn/ui
+/lib/survey           # 선택지 라벨, 설문 상태(store), 단계별 검증·엔진 입력 변환(schema) ✅
 /lib/engine           # 추천 엔진 (순수 함수, UI·브라우저 API 의존 X) ✅ 구현
   index.ts            #  recommend(input) 진입점
   score.ts            #  증상/환경 → 영양소 점수·등급, 레드플래그

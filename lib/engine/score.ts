@@ -70,7 +70,7 @@ export function score(d: EngineData, input: UserInput, facts: Facts): ScoreResul
 
   for (const rule of d.envRules) {
     if (!matches(rule.when, facts)) continue;
-    for (const b of rule.boosts) add(b.id, b.weight, b.evidence, rule.reason ?? rule.id);
+    for (const b of rule.boosts) add(b.id, b.weight, b.evidence, rule.reason ?? "생활환경");
     if (rule.tips) tips.push(...rule.tips);
     if (rule.preferMultivitamin) preferMultivitamin = true;
     if (rule.requireVegan) requireVegan = true;

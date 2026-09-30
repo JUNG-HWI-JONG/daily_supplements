@@ -34,7 +34,10 @@ for (const s of symptoms.symptoms) {
   if (s.nutrients.length === 0 && !s.noSupplementNote) warnings.push(`symptom ${s.id}: 추천 영양소가 없는데 noSupplementNote 없음`);
 }
 
-for (const r of env.rules) r.boosts.forEach((b) => check(b.id, `env ${r.id}`));
+for (const r of env.rules) {
+  r.boosts.forEach((b) => check(b.id, `env ${r.id}`));
+  if (r.boosts.length > 0 && !r.reason) errors.push(`env ${r.id}: 가중치가 있는데 reason(추천 이유 문구) 없음`);
+}
 
 for (const p of interactions.nutrientPairs) { check(p.a, "nutrientPairs"); if (p.b !== "*") check(p.b, "nutrientPairs"); }
 for (const r of interactions.drugRules) {

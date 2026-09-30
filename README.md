@@ -9,7 +9,7 @@
 
 ```bash
 npm run dev            # 개발 서버 (http://localhost:3000)
-npm test               # 추천 엔진 테스트 (페르소나·안전 규칙·무작위 입력 2,000건)
+npm test               # 엔진·설문 테스트 (페르소나·안전 규칙·무작위 입력 2,000건)
 npm run validate:data  # data/*.json 무결성 검사
 npm run typecheck      # 타입 검사
 npm run lint           # 린트
@@ -18,7 +18,9 @@ npm run lint           # 린트
 ## 구조
 
 ```
-app/            Next.js 화면 (아직 기본 템플릿)
+app/            Next.js 화면 — / 시작, /survey 설문, /result 결과(임시)
+components/     survey/ 설문 단계 화면, ui/ shadcn/ui
+lib/survey/     설문 선택지·상태·검증
 lib/engine/     추천 엔진 — 순수 TypeScript 함수, 브라우저에서 실행
   index.ts        recommend(input) 진입점
   score.ts        1. 증상·생활환경 → 영양소 점수·등급, 레드플래그
@@ -26,7 +28,7 @@ lib/engine/     추천 엔진 — 순수 TypeScript 함수, 브라우저에서 �
   match.ts        3. 예산·제형·알약 수·범위 조건에서 제품 조합
   schedule.ts     5. 복용 시간표 (한 번에 / 나눠서 / 교대근무)
 data/           영양소·증상·규칙·제품 데이터 (설명: data/README.md)
-tests/engine/   엔진 테스트
+tests/          엔진·설문 테스트
 scripts/        데이터 검사 스크립트
 ```
 
