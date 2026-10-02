@@ -12,7 +12,10 @@ const points = [
 export default function Home() {
   return (
     <main className="mx-auto flex w-full max-w-xl flex-1 flex-col px-4 py-12">
-      <p className="text-sm font-medium text-primary">데일리 영양제</p>
+      <p className="flex items-center gap-2 text-sm font-medium text-primary">
+        데일리 영양제
+        <span className="rounded-full border border-primary/30 px-2 py-0.5 text-xs font-normal">테스트 버전</span>
+      </p>
       <h1 className="mt-2 text-3xl leading-tight font-bold">
         나한테 맞는 영양제,
         <br />
@@ -37,7 +40,7 @@ export default function Home() {
       </Link>
 
       <p className="mt-6 text-xs leading-relaxed text-muted-foreground">
-        이 서비스는 의학적 진단을 대체하지 않으며, 전문가 검수를 거치지 않은 개인 프로젝트입니다. 질환이 있거나 약을 먹고 있다면 약사·의사와 상담하세요.
+        연습용으로 만든 테스트 버전이에요. 영양소 기준과 제품 함량은 전문가 검수를 거치지 않은 초안이라, 실제 복용 결정에 쓰지 말고 참고만 해주세요. 이 서비스는 의학적 진단을 대체하지 않으며, 질환이 있거나 약을 먹고 있다면 약사·의사와 상담하세요.
       </p>
     </main>
   );

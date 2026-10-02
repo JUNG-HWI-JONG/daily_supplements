@@ -5,7 +5,7 @@
 
 | 항목 | 내용 |
 |---|---|
-| 문서 버전 | v0.3 |
+| 문서 버전 | v0.4 |
 | 작성일 | 2026-09-30 |
 | 상태 | Draft – 결정 사항 반영 (§0), 남은 질문은 [§13](#13-미결-사항-open-questions) |
 
@@ -375,7 +375,7 @@
 
 | # | 질문 | 결정 (2026-09-30) |
 |---|---|---|
-| Q1 | 배포 대상 | **본인 전용** → 로컬 실행 또는 Vercel 비공개 배포. 공개는 추후 |
+| Q1 | 배포 대상 | **지인 테스트 공개** (2026-10-02 변경, 연습용) → GitHub(`JUNG-HWI-JONG/daily_supplements`) + Vercel 배포, 링크 공유. 검색엔진 노출 차단(noindex), 시작 화면에 "테스트 버전" 표시. 피드백 수집 버튼은 보류 |
 | Q2 | 복용 알림 MVP 포함 여부 | **추후 (Phase 2)** → MVP는 서버 없는 순수 정적 앱 |
 | Q3 | LLM 기능 | **추후** → MVP는 템플릿 문장으로 설명 |
 | Q4 | 디자인 | **기본안**: 깔끔한 헬스케어 톤, shadcn/ui 기본 |
@@ -398,7 +398,7 @@
 | 로컬 저장 | **IndexedDB (Dexie.js)** | 가입 없이 프로필·복용 기록 저장, 용량·구조화 유리 |
 | PWA | Serwist (`@serwist/next`) 또는 수동 Service Worker + `app/manifest.ts` | 설치·오프라인 |
 | 테스트 | Vitest (추천 엔진 단위 테스트), Playwright (주요 플로우) | 안전 규칙 회귀 방지 |
-| 배포 | Vercel | Next.js 기본, 무료 티어 |
+| 배포 | Vercel (GitHub `main` 푸시 시 자동 배포) | Next.js 기본, 무료 티어 |
 | (Phase 2) 알림 | Web Push (VAPID) + Vercel Cron + 소형 KV 저장소 | §14.3 |
 | (Phase 2) LLM | Next.js Route Handler → Claude API | 키를 서버에만 보관 |
 | (Phase 3) 스토어 앱 | Capacitor | 같은 웹 코드로 iOS/Android 앱, 네이티브 로컬 알림 |
